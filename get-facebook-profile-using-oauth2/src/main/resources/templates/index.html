@@ -13,15 +13,29 @@
     <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
 
     <script type="text/javascript">
-        if (window.location.hash == '#_=_') {
-            history.replaceState
-                ? history.replaceState(null, null, window.location.href.split('#')[0])
-                : window.location.hash = '';
-        }
+        $( document ).ready(function() {
+            console.log( "ready!" );
+
+            /*if (window.location.hash == '#_=_') {
+                history.replaceState
+                    ? history.replaceState(null, null, window.location.href.split('#')[0])
+                    : window.location.hash = '';
+            }*/
+            document.location.href = String( document.location.href ).replace( "#/", "" );
+        });
+
+
+        $.get("/getProfile", function (data) {
+
+            alert(JSON.stringify(data.userAuthentication.details))
+            $("#user").html(data.userAuthentication.details.name);
+            $(".unauthenticated").hide()
+            $(".authenticated").show()
+        });
 
         $.get("/user", function (data) {
 
-            // alert(JSON.stringify(data.userAuthentication.details))
+            alert(JSON.stringify(data.userAuthentication.details))
             $("#user").html(data.userAuthentication.details.name);
             $(".unauthenticated").hide()
             $(".authenticated").show()

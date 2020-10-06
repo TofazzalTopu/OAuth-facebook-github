@@ -1,8 +1,10 @@
 security:
   oauth2:
     client:
-      clientId: 613356575897859
-      clientSecret: 7ec375f76bcc3b28ab9fdb8bdb6028a0
+      clientId:  894789346999-li2md00qain2qq8e7jkqv75m3ke5k62f.apps.googleusercontent.com
+#      clientId: 613356575897859
+      clientSecret: p5uJdHTPmRTgrQD6G1G87-1M
+#      clientSecret: 7ec375f76bcc3b28ab9fdb8bdb6028a0
       accessTokenUri: https://graph.facebook.com/oauth/access_token
       userAuthorizationUri: https://www.facebook.com/dialog/oauth
       tokenName: oauth_token
@@ -15,7 +17,8 @@ security:
 facebook:
   client:
     clientId: 233668646673605
-    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    clientSecret: 7ec375f76bcc3b28ab9fdb8bdb6028a0
+#    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
     accessTokenUri: https://graph.facebook.com/oauth/access_token
     userAuthorizationUri: https://www.facebook.com/dialog/oauth
     tokenName: oauth_token

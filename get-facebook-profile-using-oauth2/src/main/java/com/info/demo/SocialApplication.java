@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -19,6 +20,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,20 +30,17 @@ import org.springframework.web.context.request.RequestContextListener;
 
 import javax.servlet.Filter;
 import java.security.Principal;
+import java.util.List;
 
 @SpringBootApplication
 @EnableOAuth2Sso
 @RestController
 public class SocialApplication extends WebSecurityConfigurerAdapter {
-
-    private static final String GRAPH_API_BASE_URL =
-            "https://graph.facebook.com/v2.12";
-
+    private static final String GRAPH_API_BASE_URL = "https://graph.facebook.com/v2.12";
     protected RestTemplate restTemplate;
 
     @Autowired
     OAuth2ClientContext oauth2ClientContext;
-
 
     /*public Facebook(String accessToken) {
         super(accessToken);
